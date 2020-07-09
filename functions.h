@@ -1,6 +1,16 @@
 #pragma once
 #ifndef functions
 #define functions
+#include <mutex>
+#include <cstdio>
+#include <stdlib.h>
+#include <string.h>
+#include <ctime>
+#include <thread>
+#include <time.h>
+#include "current_calc.h"
+#include "modbus.h"
+#include "gui_data.h"
 
 constexpr auto NUM_COIL_BITS = 5;
 constexpr auto NUM_DISCRETE_INPUTS = 22;
@@ -91,12 +101,14 @@ struct Module {
 	input_regs i_regs;
 	holding_regs h_regs;
 };
-struct GUI {
-	int gui_mode;
-};
-extern Module md1, md2, md3, md4;
-extern GUI gui_md;
 
+extern Module md1, md2, md3, md4;
+
+extern std::mutex m;
+extern float pos_global[3];
+extern float B_ref_global[3];
+extern float B_mag_global;
+extern float Current_ref_global[8];
 extern void input_to_cur_ref();
 extern void modbus_communication();
 

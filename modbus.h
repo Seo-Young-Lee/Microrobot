@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include <iostream>
-#include <winsock2.h>
+#include <winsock.h>
 #pragma comment(lib,"Ws2_32.lib")	
 //#include <sys/socket.h>
 //#include <netinet/in.h>
